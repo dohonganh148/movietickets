@@ -1,0 +1,80 @@
+.header {
+  background-color: rgb(10, 10, 56);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 30px;
+  // position: fixed;
+  width: 100%;
+  a {
+    color: #fff;
+    font-weight: bold;
+  }
+  .logo {
+    font-size: 35px;
+  }
+  .menu {
+    a {
+      display: inline-block;
+      margin-right: 30px;
+      transition: all 0.3s linear;
+      &:hover {
+        color: pink;
+      }
+    }
+  }
+  .group {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    .authen {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s linear;
+      &:hover {
+        color: rgb(255, 208, 0);
+      }
+      svg {
+        font-size: 26px;
+      }
+    }
+    .authenActive {
+      color: rgb(255, 208, 0);
+    }
+  }
+  .profile {
+    position: relative;
+    .user {
+      font-size: 20px;
+      color: #fff;
+    }
+    .dropdownMenu {
+      position: absolute;
+      display: none;
+      width: 100%;
+      z-index: 9;
+      .menuItem {
+        cursor: pointer;
+        text-align: center;
+        background: #fff;
+        font-weight: 600;
+        border-radius: 4px;
+        color: rgb(10, 10, 56);
+        padding: 10px;
+        margin-top: 20px;
+        &:hover {
+          background: rgb(10, 10, 56);
+          color: #fff;
+          border: solid 1px #fff;
+        }
+      }
+    }
+    &:hover {
+      .dropdownMenu {
+        display: block;
+      }
+    }
+  }
+}

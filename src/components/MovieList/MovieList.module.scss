@@ -1,0 +1,16 @@
+.content{
+    margin-bottom: 30px;
+    .list{
+        padding-top: 80px;
+        margin-bottom: 30px;
+        max-width: 960px;
+        width: 100%;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+    }
+    ul{
+        text-align: center;
+    }
+}
