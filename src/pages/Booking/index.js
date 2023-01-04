@@ -3,7 +3,7 @@ import styles from "./Booking.module.scss";
 import BgBooking from "images/bgAuthen.jpg";
 import ChairItem from "components/ChairItem";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMovieBookingAction, setPurchaseSeat } from "redux/actions/bookingAction";
+import { fetchMovieBookingAction, setPurchaseSeat, setDeleteSeat } from "redux/actions/bookingAction";
 import { useParams } from "react-router-dom";
 
 const Booking = () => {
@@ -97,7 +97,7 @@ const Booking = () => {
                   <td>{item.tenGhe}</td>
                   <td>{item.giaVe.toLocaleString()}</td>
                   <td>
-                    <button className={styles.btnDel}>X</button>
+                    <button onClick={() => dispatch(setDeleteSeat(item))} className={styles.btnDel}>X</button>
                   </td>
                 </tr>
                 ))}

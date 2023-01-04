@@ -87,3 +87,10 @@ export const setPurchaseSeat = (seatPurchase) => (dispatch) => {
     payload: seatPurchase,
   })
 }
+
+export const setDeleteSeat = (seatDelete) => (dispatch) => {
+  dispatch({
+    type: actions.DELETE_SEAT,
+    payload: seatDelete,
+  })
+}

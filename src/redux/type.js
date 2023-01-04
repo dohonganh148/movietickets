@@ -13,6 +13,7 @@ const actions = {
     SET_MOVIE_BOOKING: `${sliceName}/SET_MOVIE_BOOKING`,
     SELECT_SEAT: `${sliceName}/SELECT_SEAT`,
     PURCHASE: `${sliceName}/PURCHASE`,
+    DELETE_SEAT: `${sliceName}/DELETE_SEAT`,
 };
 
 export default actions;

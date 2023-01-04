@@ -59,7 +59,7 @@ const reducer = (state = initialState, { type, payload }) => {
       return { ...state, selectedSeat: data };
     };
     case actions.PURCHASE:{
-      const data = state.movieBooking;
+      const data = {...state.movieBooking};
       data.danhSachGhe.map( (item) => {
         state.selectedSeat.forEach( ele => {
           if(ele.maGhe === item.maGhe) {
@@ -69,7 +69,15 @@ const reducer = (state = initialState, { type, payload }) => {
         return item
       });
       return {...state, movieBooking: data, selectedSeat: []}
-    }
+    };
+    case actions.DELETE_SEAT: {
+      const data = [...state.selectedSeat];
+      const index = data.findIndex( item => item.maGhe === payload.maGhe );
+      if (index > -1) {
+        data.splice(index, 1);
+      };
+      return {...state, selectedSeat: data};
+    };
 
     default:
       return { ...state };

@@ -33,7 +33,7 @@ const Header = () => {
     <div className={styles.header}>
       <div>
         <Link to="/" className={styles.logo}>
-          Cinema
+          Cinemas
         </Link>
       </div>
       <nav className={styles.menu}>

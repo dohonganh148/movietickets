@@ -83,11 +83,12 @@
           border-radius: 8px;
           padding: 12px;
           .detail{
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             padding: 8px;
             p{
               font-weight: bold;
+              text-align: right;
             }
           }
         }
