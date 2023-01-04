@@ -1,0 +1,45 @@
+.content {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+  .infor {
+    margin-bottom: 40px;
+    button {
+      margin: 0 30px;
+      background: transparent;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 24px;
+      height: 48px;
+      border: transparent;
+      transition: all 0.4s linear;
+      padding: 6px 12px;
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+    .active {
+      color: #fb4226;
+      border-bottom: 2px solid #fb4226;
+      &:hover {
+          transform: none;
+      }
+    }
+  }
+  .btnAdd {
+    color: #949494;
+    border: 1px solid #949494;
+    border-radius: 4px;
+    padding: 10px 24px;
+    font-size: 14px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.4s linear;
+    &:hover {
+      background-color: #fb4226;
+      color: #fff;
+      border-color: #fb4226;
+    }
+  }
+}

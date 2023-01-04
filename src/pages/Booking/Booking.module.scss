@@ -1,0 +1,163 @@
+.container {
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  .row {
+    position: relative;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    padding-top: 50px;
+    .col1 {
+      width: 60%;
+      text-align: center;
+      .content {
+        width: 100%;
+        .screen {
+          color: #fff;
+          border-bottom: 50px solid rgb(255, 159, 95);
+          border-left: 50px solid transparent;
+          border-right: 50px solid transparent;
+          height: 100;
+          width: 80%;
+          margin: 0 auto;
+          filter: drop-shadow(4px 30px 20px rgba(255, 255, 255, 0.5));
+        }
+        .chairList {
+          margin-top: 50px;
+          display: grid;
+          grid-template-columns: repeat(16, 1fr);
+          padding: 0 40px;
+          .chair {
+            margin-top: 10px;
+          }
+        }
+        .type {
+          display: flex;
+          justify-content: space-around;
+          margin-top: 50px;
+          .list {
+            span {
+              font-size: 16px;
+              font-weight: bold;
+              display: inline-block;
+              margin-left: 8px;
+              color: #fff;
+            }
+            button {
+              width: 30px;
+              height: 30px;
+              border: 1px solid orange;
+              border-radius: 4px;
+              background-color: rgb(247, 242, 242);
+            }
+            .booked {
+              background-color: gray;
+              border-color: gray;
+            }
+            .vip {
+              background-color: orange;
+            }
+            .booking {
+              background-color: rgb(100, 236, 100);
+              border: 1px solid rgb(100, 236, 100);
+            }
+          }
+        }
+      }
+    }
+    .col2 {
+      width: 40%;
+      .infoMovie{
+        color: #fff;
+        h1{
+          color: rgb(100, 236, 100);
+          text-align: center;
+          margin-bottom: 12px;
+        }
+        .infoCinema{
+          border: 1px solid #fff;
+          margin-right: 40px;
+          margin-left: 20px;
+          border-radius: 8px;
+          padding: 12px;
+          .detail{
+            display: flex;
+            justify-content: space-between;
+            padding: 8px;
+            p{
+              font-weight: bold;
+            }
+          }
+        }
+        
+      }
+      h3 {
+        text-align: center;
+        color: orange;
+        margin-top: 40px;
+      }
+      table {
+        text-align: center;
+        border: 1px solid #fff;
+        margin-left: 20px;
+        margin-top: 16px;
+        border-collapse: collapse;
+        width: 90%;
+        margin-right: 70px;
+        thead {
+          color: #fff;
+        }
+        tbody {
+          color: orange;
+          font-weight: bold;
+          .btnDel {
+            width: 20px;
+            height: 20px;
+            font-weight: bold;
+            color: red;
+            background-color: transparent;
+            border: 1px solid #fff;
+            cursor: pointer;
+            transition: all 0.2s linear;
+
+            &:hover {
+              background-color: black;
+              color: #fff;
+              border-color: rgb(100, 236, 100);
+            }
+          }
+          .total {
+            color: #fff;
+          }
+        }
+        th,
+        td {
+          border: 1px solid #fff;
+          line-height: 35px;
+        }
+      }
+
+      .purchase {
+        margin-left: 20px;
+        margin-top: 50px;
+        background-color: orange;
+        padding: 10px 30px;
+        border: 1px solid orange;
+        color: #fff;
+        font-size: 18px;
+        font-weight: bold;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s linear;
+
+        &:hover {
+          background-color: black;
+          color: #fff;
+          border-color: rgb(100, 236, 100);
+        }
+      }
+    }
+  }
+}

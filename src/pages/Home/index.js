@@ -4,6 +4,9 @@ import SearchBox from "components/SearchBox";
 import MovieList from "components/MovieList";
 import ScheduleMovie from "components/ScheduleMovie";
 import s from "./Home.module.scss";
+import Infor from "components/Infor";
+import Application from "components/Application";
+import Footer from "components/Footer";
 
 const Home = () => {
   return (
@@ -14,6 +17,9 @@ const Home = () => {
       </div>
       <MovieList />
       <ScheduleMovie />
+      <Infor />
+      <Application />
+      <Footer />
     </div>
   );
 };

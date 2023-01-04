@@ -4,6 +4,8 @@ import { Tabs } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCinemaAction } from "redux/actions/bookingAction";
 import { getScheduleCinema } from "services/bookingService";
+import moment from "moment";
+import { Link } from "react-router-dom";
 
 const ScheduleMovie = () => {
   const dispatch = useDispatch();
@@ -19,6 +21,7 @@ const ScheduleMovie = () => {
     );
   }, [cinemaList]);
 
+  console.log(listSchedule);
   return (
     <div className={styles.content}>
       <Tabs
@@ -41,14 +44,37 @@ const ScheduleMovie = () => {
                       <div>
                         <p>{itemGroupCinema?.tenCumRap}</p>
                         <p>{itemGroupCinema?.diaChi}</p>
+                        <p>[chi tiết]</p>
                       </div>
                     ),
                     key: itemGroupCinema.maCumRap,
                     children: (
-                      <div>
-                        {itemGroupCinema?.danhSachPhim?.map((itemMovie, index) => (
-                          <div key={index}>{itemMovie.tenPhim}</div>
-                        ))}
+                      <div className={styles.movieList}>
+                        {itemGroupCinema?.danhSachPhim?.map(
+                          (itemMovie, index) => (
+                            <div key={index} className={styles.movieItem}>
+                              <img alt="" src={itemMovie.hinhAnh} />
+                              <div className={styles.detail}>
+                                <h2>
+                                  <span>C18</span> {itemMovie.tenPhim}
+                                </h2>
+                                <div className={styles.schedule}>
+                                  {itemMovie.lstLichChieuTheoPhim.slice(0,4).map(
+                                    (item, index) => (
+                                      <button key={index}>
+                                        <Link to={`/booking/${item.maLichChieu}`}>
+                                          {moment(
+                                            item.ngayChieuGioChieu
+                                          ).format("DD/MM/YYYY ~ hh:mm")}
+                                        </Link>
+                                      </button>
+                                    )
+                                  )}
+                                </div>
+                              </div>
+                            </div>
+                          )
+                        )}
                       </div>
                     ),
                   };

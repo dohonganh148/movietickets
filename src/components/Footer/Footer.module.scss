@@ -1,0 +1,80 @@
+.footer {
+  background-color: #212121;
+  padding: 24px 0;
+  .content {
+    max-width: 960px;
+    margin: 0 auto;
+    color: #fff;
+    .top {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 50px;
+      border-bottom: 1px solid #fff;
+      padding-bottom: 30px;
+      h3{
+          margin-bottom: 10px;
+          font-size: 12px;
+      }
+      .about{
+          .list{
+              display: grid;
+              grid-template-columns: repeat(2, 1fr);
+              p{
+                  color: #9e9e9e;
+                  font-size: 12px;
+                  padding-bottom: 7px;
+                  cursor: pointer;
+                  transition: all .3s linear;
+                  &:hover{
+                      color: #fff;
+                  }
+              }
+          }
+      }
+      .partner{
+          .item{
+             display: grid;
+             grid-template-columns: repeat(4, 1fr);
+             gap: 20px;
+             img{
+                 width: 60%;
+                 border-radius: 50%;
+                 cursor: pointer;
+                 transition: all .2s linear;
+                 &:hover{
+                     filter: grayscale(1);
+                 }
+             }
+          }
+      }
+      .socials{
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          svg{
+              color: #9e9e9e;
+              margin-right: 10px;
+              width: 30px;
+              height: 30px;
+          }
+      }
+    }
+    .bot{
+        margin-top: 30px;
+        display: flex;
+        img{
+            padding-right: 50px;
+            height: 40%;
+        }
+        .tix{
+            h5{
+                font-size: 12px;
+                padding-bottom: 20px;
+            }
+            p{
+                font-size: 12px;
+                line-height: 18px;
+            }
+        }
+    }
+  }
+}

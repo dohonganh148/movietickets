@@ -8,6 +8,8 @@ const apiPath = {
     PROFILE: "/api/QuanLyNguoiDung/DangNhap",
     PROFILE_ACTION: "/api/QuanLyNguoiDung/ThongTinTaiKhoan",
     USER_SIGNUP: "/api/QuanLyNguoiDung/DangKy",
+    MOVIE_DETAIL_SCHEDULE: "/api/QuanLyRap/LayThongTinLichChieuPhim",
+    MOVIE_BOOKING: "/api/QuanLyDatVe/LayDanhSachPhongVe",
 };
 
 export default apiPath;

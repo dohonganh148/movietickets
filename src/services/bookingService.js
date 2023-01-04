@@ -19,7 +19,7 @@ export const getMovieList = async () => {
       method: "GET",
       url: apiPath.MOVIE_LIST,
       params: {
-        maNhom: "GP09",
+        maNhom: "GP06",
       },
     });
     return res;
@@ -49,7 +49,7 @@ export const getMovies = async (page) => {
       method: "GET",
       url: apiPath.MOVIES,
       params: {
-        maNhom: "GP09",
+        maNhom: "GP06",
         soTrang: page,
         soPhanTuTrenTrang: 4,
       }
@@ -77,6 +77,39 @@ export const getScheduleCinema = async (maHeThongRap) => {
     const res = await requester({
       method: "GET",
       url: apiPath.SCHEDULE_CINEMA + `?maHethongRap=${maHeThongRap}&maNhom=GP09`,
+    });
+    return res;
+  } catch(err) {
+    console.log(err)
+  }
+}
+
+
+// PAGE Detail Movie
+export const getMovieDetailSchedule = async (id) => {
+  try{
+    const res = await requester({
+      method: "GET",
+      url: apiPath.MOVIE_DETAIL_SCHEDULE,
+      params: {
+        maPhim: id,
+      }
+    });
+    return res;
+  } catch(err) {
+    console.log(err)
+  }
+};
+
+// BOOKING: Movie booking
+export const getMovieBooking = async (id) => {
+  try{
+    const res = await requester({
+      method: "GET",
+      url: apiPath.MOVIE_BOOKING,
+      params: {
+        maLichChieu: id,
+      }
     });
     return res;
   } catch(err) {

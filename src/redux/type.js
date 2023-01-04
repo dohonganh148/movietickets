@@ -9,6 +9,10 @@ const actions = {
     SET_CINEMA_LIST: `${sliceName}/SET_CINEMA_LIST`,
     SET_SCHEDULE_CINEMA: `${sliceName}/SET_SCHEDULE_CINEMA`,
     SET_PROFILE: `${sliceName2}/SET_PROFILE`,
-}
+    SET_MOVIE_DETAIL_SCHEDULE: `${sliceName}/SET_MOVIE_DETAIL_SCHEDULE`,
+    SET_MOVIE_BOOKING: `${sliceName}/SET_MOVIE_BOOKING`,
+    SELECT_SEAT: `${sliceName}/SELECT_SEAT`,
+    PURCHASE: `${sliceName}/PURCHASE`,
+};
 
 export default actions;

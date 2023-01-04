@@ -1,0 +1,129 @@
+.content {
+  max-width: 960px;
+  margin: 50px auto 0;
+  .row {
+    display: flex;
+    .image {
+      width: 40%;
+      position: relative;
+      height: 600px;
+      border-radius: 4px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      .trailer {
+        position: absolute;
+        top: 0;
+        height: 600px;
+        width: 100%;
+        background: linear-gradient(to top, #000, transparent 100%);
+        border-radius: 4px;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s linear;
+        button {
+          border: 2px solid #fff;
+          border-radius: 50%;
+          padding: 16px;
+          background-color: transparent;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          cursor: pointer;
+          transition: all 0.3s linear;
+          svg {
+            color: #fff;
+            font-size: 30px;
+          }
+          &:hover {
+            border-color: #dfdede;
+            svg {
+              color: #dfdede;
+            }
+          }
+        }
+      }
+      &:hover {
+        .trailer {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+    .detail {
+      width: 60%;
+      padding-left: 40px;
+      h2 {
+        font-size: 30px;
+        margin-bottom: 20px;
+        color: #fb4226;
+      }
+      p {
+        margin: 15px 0;
+        font-weight: bold;
+        line-height: 25px;
+        span {
+          font-weight: 400;
+        }
+        .date {
+          color: #fb4226;
+          font-weight: 500;
+        }
+      }
+      .booking {
+        margin: 20px 0 40px;
+        padding: 10px 30px;
+        background-color: #fb4226;
+        border: none;
+        color: #fff;
+        font-size: 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s linear;
+        &:hover {
+          background-color: rgb(10, 10, 56);
+        }
+      }
+      .cinema {
+        text-align: center;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .tabLogo {
+          width: 60px;
+          height: 60px;
+        }
+      }
+      .groupCinema {
+        margin-left: 16px;
+        margin-bottom: 20px;
+        .name {
+          margin: 0;
+          font-size: 16px;
+          color: rgb(78, 195, 74);
+        }
+        button {
+          padding: 10px;
+          border-radius: 4px;
+          margin-right: 10px;
+          margin-top: 10px;
+          background-color: rgba(246, 246, 246, 0.5);
+          border: 1px solid #e4e4e4;
+
+          .link {
+            font-size: 14px;
+            color: rgb(139, 195, 74);
+            cursor: pointer;
+            transition: all 0.3s linear;
+            &:hover {
+              color: #fb4226;
+            }
+          }
+        }
+      }
+    }
+  }
+}
