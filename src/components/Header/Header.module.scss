@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 25px 50px;
-  // position: fixed;
+  position: fixed;
   z-index: 100;
   width: 100%;
   a {
@@ -47,9 +47,20 @@
   }
   .profile {
     position: relative;
-    .user {
-      font-size: 20px;
-      color: #fff;
+    .authen {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s linear;
+      &:hover {
+        color: rgb(255, 208, 0);
+      }
+      svg {
+        font-size: 26px;
+      }
+    }
+    .authenActive {
+      color: rgb(255, 208, 0);
     }
     .dropdownMenu {
       position: absolute;

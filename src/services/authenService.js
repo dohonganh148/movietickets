@@ -40,3 +40,17 @@ export const signUp = async (userSignup) => {
         console.log(err);
     }
 }
+
+// PUT thong tin user update profile
+export const updateProfile = async (values) => {
+    try{
+        const res = await requester({
+            method: "PUT",
+            url: apiPath.UPDATE_PROFILE,
+            data: values,
+        });
+        return res;
+    } catch(err) {
+        console.log(err)
+    }
+}

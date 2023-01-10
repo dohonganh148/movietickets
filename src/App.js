@@ -9,6 +9,7 @@ import Signup from "pages/Signup";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchProfileAction } from "redux/actions/authenAction";
+import ProfileUser from "pages/ProfileUser";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -20,13 +21,16 @@ const App = () => {
   return (
     <BrowserRouter>
       <Header />
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route path="/detail/:id" element={<DetailMovie />} />
-        <Route path="/booking/:id" element={<Booking />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-      </Routes>
+      <div style={{paddingTop: 90}}>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/detail/:id" element={<DetailMovie />} />
+          <Route path="/booking/:id" element={<Booking />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/profile" element={<ProfileUser />} />
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 };

@@ -99,6 +99,18 @@ const Signup = () => {
           >
             <Input />
           </Form.Item>
+          <Form.Item
+            label="Số điện thoại"
+            name="soDt"
+            rules={[
+              {
+                required: true,
+                message: "Vui lòng nhập Số điện thoại!",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
 
           <Form.Item
             label="Email"

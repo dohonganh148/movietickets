@@ -10,6 +10,7 @@ const apiPath = {
     USER_SIGNUP: "/api/QuanLyNguoiDung/DangKy",
     MOVIE_DETAIL_SCHEDULE: "/api/QuanLyRap/LayThongTinLichChieuPhim",
     MOVIE_BOOKING: "/api/QuanLyDatVe/LayDanhSachPhongVe",
+    UPDATE_PROFILE: "/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
 };
 
 export default apiPath;

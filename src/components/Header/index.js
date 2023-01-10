@@ -45,7 +45,10 @@ const Header = () => {
       </nav>
       {profile ? (
         <div className={styles.profile}>
-          <span className={styles.user}>Hello, {profile.hoTen}</span>
+          <NavLink to="/profile" className={({ isActive }) => {
+              if (isActive) return `${styles.authenActive} ${styles.authen}`;
+              return styles.authen;
+            }}>Hello, {profile.hoTen}</NavLink>
           <div className={styles.dropdownMenu}>
             <div className={styles.menuItem} onClick={handleLogout}>
               Đăng xuất
