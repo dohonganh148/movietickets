@@ -69,30 +69,29 @@
     }
     .col2 {
       width: 40%;
-      .infoMovie{
+      .infoMovie {
         color: #fff;
-        h1{
+        h1 {
           color: rgb(100, 236, 100);
           text-align: center;
           margin-bottom: 12px;
         }
-        .infoCinema{
+        .infoCinema {
           border: 1px solid #fff;
           margin-right: 40px;
           margin-left: 20px;
           border-radius: 8px;
           padding: 12px;
-          .detail{
+          .detail {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             padding: 8px;
-            p{
+            p {
               font-weight: bold;
               text-align: right;
             }
           }
         }
-        
       }
       h3 {
         text-align: center;
@@ -161,4 +160,24 @@
       }
     }
   }
+}
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  svg{
+    color: rgba(255, 51, 0, 0.952);
+    width: 50px;
+    height: 50px;
+  }
+  h3{
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 24px;
+  }
+  p{
+    margin-bottom: 10px;
+  }
+
 }

@@ -1,10 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Booking.module.scss";
 import BgBooking from "images/bgAuthen.jpg";
 import ChairItem from "components/ChairItem";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMovieBookingAction, setPurchaseSeat, setDeleteSeat } from "redux/actions/bookingAction";
-import { useParams } from "react-router-dom";
+import {
+  fetchMovieBookingAction,
+  setPurchaseSeat,
+  setDeleteSeat,
+} from "redux/actions/bookingAction";
+import { useNavigate, useParams } from "react-router-dom";
+import { Modal, Button } from "antd";
+import { MdOutlineCancel } from "react-icons/md";
 
 const Booking = () => {
   const dispatch = useDispatch();
@@ -12,12 +18,30 @@ const Booking = () => {
   const movieBooking = useSelector((state) => state.booking.movieBooking);
   const selectedSeat = useSelector((state) => state.booking.selectedSeat);
 
+  const auth = useSelector((state) => state.authen.profile);
+
+  const [isModalOpen, setIsOpenModal] = useState(false);
+  const navigate = useNavigate();
+
   useEffect(() => {
     dispatch(fetchMovieBookingAction(params.id));
   }, [dispatch, params.id]);
 
-  // console.log(selectedSeat);
+  const handleCancel = () => {
+    setIsOpenModal(false);
+  };
+  const handleOk = () => {
+    setIsOpenModal(true);
+    navigate("/login");
+  };
 
+  const handlePurchase = () => {
+    if (auth) {
+      dispatch(setPurchaseSeat(selectedSeat));
+    } else {
+      setIsOpenModal(true);
+    }
+  };
   return (
     <div
       className={styles.container}
@@ -94,29 +118,69 @@ const Booking = () => {
               <tbody>
                 {selectedSeat.map((item) => (
                   <tr key={item.maGhe}>
-                  <td>{item.tenGhe}</td>
-                  <td>{item.giaVe.toLocaleString()}</td>
-                  <td>
-                    <button onClick={() => dispatch(setDeleteSeat(item))} className={styles.btnDel}>X</button>
-                  </td>
-                </tr>
+                    <td>{item.tenGhe}</td>
+                    <td>{item.giaVe.toLocaleString()}</td>
+                    <td>
+                      <button
+                        onClick={() => dispatch(setDeleteSeat(item))}
+                        className={styles.btnDel}
+                      >
+                        X
+                      </button>
+                    </td>
+                  </tr>
                 ))}
                 <tr>
                   <td className={styles.total}>Tổng tiền:</td>
                   <td>
-                    {selectedSeat.reduce( (totalPrice, item) => {
-                      return totalPrice += item.giaVe
-                    }, 0).toLocaleString()}
+                    {selectedSeat
+                      .reduce((totalPrice, item) => {
+                        return (totalPrice += item.giaVe);
+                      }, 0)
+                      .toLocaleString()}
                   </td>
                 </tr>
               </tbody>
             </table>
             <div>
-              <button onClick={() => dispatch(setPurchaseSeat(selectedSeat))} className={styles.purchase}>Thanh toán</button>
+              <button
+                onClick={() => handlePurchase()}
+                className={styles.purchase}
+              >
+                Thanh toán
+              </button>
             </div>
           </div>
         </div>
       </div>
+      <Modal
+        centered
+        title=""
+        cancelText="Không"
+        okText="Đồng ý"
+        open={isModalOpen}
+        onOk={() => setIsOpenModal(false)}
+        onCancel={() => setIsOpenModal(false)}
+        footer={[
+          <Button key="back" onClick={handleCancel}>
+            Không
+          </Button>,
+          <Button
+            type="primary"
+            onClick={handleOk}
+          >
+            Đồng ý
+          </Button>,
+        ]}
+      >
+        <div className={styles.modal}>
+          <p>
+            <MdOutlineCancel />
+          </p>
+          <h3>Bạn chưa đăng nhập</h3>
+          <p>Bạn có muốn đăng nhập không?</p>
+        </div>
+      </Modal>
     </div>
   );
 };

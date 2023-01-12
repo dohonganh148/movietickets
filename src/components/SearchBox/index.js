@@ -6,6 +6,7 @@ import {
   fetchMovieListAction,
   fetchMovieSchedule,
 } from "redux/actions/bookingAction";
+import moment from "moment";
 
 const SearchBox = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,8 @@ const SearchBox = () => {
 
   const movieList = useSelector((state) => state.booking.movieList);
   const movieSchedule = useSelector((state) => state.booking.movieSchedule);
+  const [selectedMovieId, setSelectedMovieId] = useState();
+  const [selectedCinema, setSelectedCinema] = useState({});
   const searchBox = [
     {
       label: "Phim",
@@ -38,12 +41,17 @@ const SearchBox = () => {
       case "Rạp":
         return movieSchedule?.heThongRapChieu?.map((item) => {
           return {
-            value: item.maHeThongRap,
-            label: item.tenHeThongRap,
+            value: JSON.stringify(item.cumRapChieu[0]),
+            label: item.cumRapChieu[0].tenCumRap,
           };
         });
       case "Ngày giờ chiếu":
-        return;
+        return selectedCinema?.lichChieuPhim?.map((item) => {
+          return {
+            value: item?.ngayChieuGioChieu,
+            label: moment(item?.ngayChieuGioChieu).format("DD/MM/YYYY ~ hh:mm"),
+          };
+        });
       default:
         return movieList?.map((item) => {
           return {
@@ -53,19 +61,22 @@ const SearchBox = () => {
         });
     }
   };
-  const handleChange = (id, label) => {
+  const handleChange = (value, label) => {
     switch (label) {
       case "Phim":
-        dispatch(fetchMovieSchedule(id));
+        dispatch(fetchMovieSchedule(value));
+        setSelectedMovieId(value);
         break;
       case "Rạp":
+        setSelectedCinema(JSON.parse(value));
         break;
       case "Ngày giờ chiếu":
         break;
       default:
-        dispatch(fetchMovieSchedule(id));
+        dispatch(fetchMovieSchedule(value));
     }
   };
+
   return (
     <div className={styles.searchBox}>
       <div className={styles.content}>
