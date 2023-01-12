@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./SearchBox.module.scss";
 import { Select } from "antd";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,7 +15,6 @@ const SearchBox = () => {
 
   const movieList = useSelector((state) => state.booking.movieList);
   const movieSchedule = useSelector((state) => state.booking.movieSchedule);
-
   const searchBox = [
     {
       label: "Phim",
@@ -60,7 +59,6 @@ const SearchBox = () => {
         dispatch(fetchMovieSchedule(id));
         break;
       case "Rạp":
-        console.log("chon rap");
         break;
       case "Ngày giờ chiếu":
         break;

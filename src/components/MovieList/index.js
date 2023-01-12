@@ -13,7 +13,7 @@ const MovieList = () => {
     dispatch(fetchMovies());
   }, [dispatch]);
   return (
-    <div className={styles.content}>
+    <div className={styles.content} id="schedule">
       <div className={styles.list}>
         {movies?.items?.map((item) => (
           <div key={item.maPhim}>

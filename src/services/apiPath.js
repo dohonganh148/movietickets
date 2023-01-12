@@ -11,6 +11,7 @@ const apiPath = {
     MOVIE_DETAIL_SCHEDULE: "/api/QuanLyRap/LayThongTinLichChieuPhim",
     MOVIE_BOOKING: "/api/QuanLyDatVe/LayDanhSachPhongVe",
     UPDATE_PROFILE: "/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
+    TYPE_USER: "/api/QuanLyNguoiDung/LayDanhSachLoaiNguoiDung",
 };
 
 export default apiPath;

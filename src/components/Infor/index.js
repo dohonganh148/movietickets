@@ -5,7 +5,7 @@ const Infor = () => {
   const [selected, setSelected] = useState(0);
   const infor = ["Điện Ảnh 24h", "Review", "Khuyến mãi"];
   return (
-    <div className={styles.content}>
+    <div className={styles.content} id="news">
       <div className={styles.infor}>
         {infor.map((item, index) => (
           <button

@@ -31,3 +31,12 @@ export const logoutAction = () => async (dispatch) => {
         payload: null,
     })
 };
+
+// GET API lay danh sach loai nguoi dung
+export const fetchTypeOfUser = () => async (dispatch) => {
+    let res = await service.getTypeOfUser();
+    res.data && dispatch({
+        type: actions.TYPE_USER,
+        payload: res.data.content,
+    })
+};

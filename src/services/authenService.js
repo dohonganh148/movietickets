@@ -41,6 +41,19 @@ export const signUp = async (userSignup) => {
     }
 }
 
+// // get API lay danh sach loai nguoi dung
+export const getTypeOfUser = async() => {
+    try{
+        const res  = await requester({
+            method: "GET",
+            url: apiPath.TYPE_USER,
+        });
+        return res;
+    } catch(err) {
+        console.log(err)
+    }
+}
+
 // PUT thong tin user update profile
 export const updateProfile = async (values) => {
     try{

@@ -19,7 +19,7 @@ export const getMovieList = async () => {
       method: "GET",
       url: apiPath.MOVIE_LIST,
       params: {
-        maNhom: "GP06",
+        maNhom: "GP09",
       },
     });
     return res;
@@ -49,7 +49,7 @@ export const getMovies = async (page) => {
       method: "GET",
       url: apiPath.MOVIES,
       params: {
-        maNhom: "GP06",
+        maNhom: "GP09",
         soTrang: page,
         soPhanTuTrenTrang: 4,
       }

@@ -14,6 +14,7 @@ const actions = {
     SELECT_SEAT: `${sliceName}/SELECT_SEAT`,
     PURCHASE: `${sliceName}/PURCHASE`,
     DELETE_SEAT: `${sliceName}/DELETE_SEAT`,
+    TYPE_USER: `${sliceName2}/TYPE_USER`,
 };
 
 export default actions;

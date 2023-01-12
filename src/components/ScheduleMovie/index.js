@@ -23,7 +23,7 @@ const ScheduleMovie = () => {
 
   console.log(listSchedule);
   return (
-    <div className={styles.content}>
+    <div className={styles.content} id="cinema">
       <Tabs
         onChange={(key) => {
           getScheduleCinema(key).then((res) =>

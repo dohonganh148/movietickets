@@ -2,42 +2,58 @@ import React, { useEffect } from "react";
 import styles from "./ProfileUser.module.scss";
 import BgProfile from "images/bgAuthen.jpg";
 import { Button, Form, Input, Select } from "antd";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateProfile } from "services/authenService";
+import { fetchTypeOfUser } from "redux/actions/authenAction";
+import moment from "moment";
+import { useNavigate } from "react-router-dom";
 
 const ProfileUser = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchTypeOfUser());
+  }, [dispatch]);
+  const navigate = useNavigate();
+  const typeOfUser = useSelector((state) => state.authen.typeOfUser);
+  const getOptions = typeOfUser.map((item) => {
+    return {
+      value: item.maLoaiNguoiDung,
+      label: item.tenLoai,
+    };
+  });
+
   const profile = useSelector((state) => state.authen.profile);
-  console.log(profile);
   const [form] = Form.useForm();
-  const setInitialValue = () => {
+  const setInitialValue = async () => {
     if (profile) {
-      form.setFieldValue({
+      form.setFieldsValue({
         taiKhoan: profile.taiKhoan,
         matKhau: profile.matKhau,
         hoTen: profile.hoTen,
         email: profile.email,
-        soDt: profile.soDt,
+        soDt: profile.soDT,
         maLoaiNguoiDung: profile.maLoaiNguoiDung,
-        maNhom: profile.maNhom
+        maNhom: "GP09",
       });
     }
   };
   useEffect(() => {
     setInitialValue();
-  }, []);
-
+  }, [profile]);
   const onFinish = async (values) => {
-      const params = {
-          taiKhoan: values.taiKhoan,
-          matKhau: values.matKhau,
-          hoTen: values.hoTen,
-          email: values.email,
-          soDt: values.soDt,
-          maLoaiNguoiDung: values.maLoaiNguoiDung,
-          maNhom: values.maNhom,
-      };
-      let res = await updateProfile(params);
-
+    const params = {
+      taiKhoan: values.taiKhoan,
+      matKhau: values.matKhau,
+      hoTen: values.hoTen,
+      email: values.email,
+      soDt: values.soDt,
+      maLoaiNguoiDung: values.maLoaiNguoiDung,
+      maNhom: values.maNhom,
+    };
+    let res = await updateProfile(params);
+    if (res.data.statusCode === 200) {
+      navigate("/");
+    }
   };
   return (
     <div
@@ -53,6 +69,7 @@ const ProfileUser = () => {
             name="basic"
             onFinish={onFinish}
             className={styles.form}
+            form={form}
           >
             <Form.Item
               label="Tài khoản"
@@ -85,9 +102,9 @@ const ProfileUser = () => {
               <Input.Password />
             </Form.Item>
 
-            <Form.Item  name="maNhom" hidden>
-            <Input />
-          </Form.Item>
+            <Form.Item name="maNhom" hidden>
+              <Input />
+            </Form.Item>
 
             <Form.Item
               label="Họ tên"
@@ -147,7 +164,7 @@ const ProfileUser = () => {
                     .localeCompare((optionB?.label ?? "").toLowerCase())
                 }
                 classname={styles.select}
-                //   options={getOptions}
+                options={getOptions}
               />
             </Form.Item>
             <Form.Item></Form.Item>
@@ -168,6 +185,19 @@ const ProfileUser = () => {
           {profile?.thongTinDatVe.map((item, index) => (
             <div key={index} className={styles.row}>
               <img alt="" src={item.hinhAnh} />
+              <div>
+                <h4>{item.danhSachGhe[0].tenHeThongRap}</h4>
+                <p>
+                  Ngày đặt: {moment(item.ngayDat).format("DD/MM/YYYY ~ hh:mm")}{" "}
+                  - {item.danhSachGhe[0].tenCumRap}
+                </p>
+                <p>
+                  Ghế:
+                  {item.danhSachGhe.map((itemCinema, index) => (
+                    <span key={index}> {itemCinema.tenGhe}, </span>
+                  ))}
+                </p>
+              </div>
               {/* {item.danhSachGhe.map((itemCinema, index) => (
                 <div key={index}>
                   <h4>{itemCinema.tenHeThongRap}</h4>

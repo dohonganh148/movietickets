@@ -6,7 +6,7 @@ import Img from "images/application.jpg";
 
 const Application = () => {
   return (
-    <div className={styles.content} style={{backgroundImage: `url(${BgApplication})`}}>
+    <div className={styles.content} style={{backgroundImage: `url(${BgApplication})`}} id='application'>
         <div className={styles.row}>
         <div className={styles.left}>
             <h2 className={styles.title}>Ứng dụng tiện lợi dành cho</h2>

@@ -8,19 +8,19 @@ import { logoutAction } from "redux/actions/authenAction";
 const menu = [
   {
     label: "Lịch chiếu",
-    link: "#home",
+    link: "/#schedule",
   },
   {
     label: "Cụm rạp",
-    link: "#home",
+    link: "/#cinema",
   },
   {
     label: "Tin tức",
-    link: "#home",
+    link: "/#news",
   },
   {
     label: "Ứng dụng",
-    link: "#home",
+    link: "/#application",
   },
 ];
 const Header = () => {
@@ -45,10 +45,15 @@ const Header = () => {
       </nav>
       {profile ? (
         <div className={styles.profile}>
-          <NavLink to="/profile" className={({ isActive }) => {
+          <NavLink
+            to="/profile"
+            className={({ isActive }) => {
               if (isActive) return `${styles.authenActive} ${styles.authen}`;
               return styles.authen;
-            }}>Hello, {profile.hoTen}</NavLink>
+            }}
+          >
+            Hello, {profile.hoTen}
+          </NavLink>
           <div className={styles.dropdownMenu}>
             <div className={styles.menuItem} onClick={handleLogout}>
               Đăng xuất
