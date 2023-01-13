@@ -18,7 +18,7 @@ const Booking = () => {
   const movieBooking = useSelector((state) => state.booking.movieBooking);
   const selectedSeat = useSelector((state) => state.booking.selectedSeat);
 
-  const auth = useSelector((state) => state.authen.profile);
+  const auth = useSelector((state) => state?.authen?.profile);
 
   const [isModalOpen, setIsOpenModal] = useState(false);
   const navigate = useNavigate();

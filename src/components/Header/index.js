@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Header.module.scss";
 import { BiUserCircle } from "react-icons/bi";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutAction } from "redux/actions/authenAction";
 
@@ -24,10 +24,12 @@ const menu = [
   },
 ];
 const Header = () => {
-  const profile = useSelector((state) => state.authen.profile);
+  const profile = useSelector((state) => state?.authen?.profile);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const handleLogout = () => {
     dispatch(logoutAction());
+    navigate("/");
   };
   return (
     <div className={styles.header}>

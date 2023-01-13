@@ -4,7 +4,10 @@ import BgProfile from "images/bgAuthen.jpg";
 import { Button, Form, Input, Select } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { updateProfile } from "services/authenService";
-import { fetchTypeOfUser } from "redux/actions/authenAction";
+import {
+  fetchProfileAction,
+  fetchTypeOfUser,
+} from "redux/actions/authenAction";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
 
@@ -12,9 +15,11 @@ const ProfileUser = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchTypeOfUser());
+    dispatch(fetchProfileAction());
   }, [dispatch]);
+
   const navigate = useNavigate();
-  const typeOfUser = useSelector((state) => state.authen.typeOfUser);
+  const typeOfUser = useSelector((state) => state?.authen?.typeOfUser);
   const getOptions = typeOfUser.map((item) => {
     return {
       value: item.maLoaiNguoiDung,
@@ -22,7 +27,7 @@ const ProfileUser = () => {
     };
   });
 
-  const profile = useSelector((state) => state.authen.profile);
+  const profile = useSelector((state) => state?.authen?.profile);
   const [form] = Form.useForm();
   const setInitialValue = async () => {
     if (profile) {
@@ -182,32 +187,26 @@ const ProfileUser = () => {
         </div>
         <div className={styles.history}>
           <h3>Lịch sử đặt vé</h3>
-          {profile?.thongTinDatVe.map((item, index) => (
-            <div key={index} className={styles.row}>
-              <img alt="" src={item.hinhAnh} />
-              <div>
-                <h4>{item.danhSachGhe[0].tenHeThongRap}</h4>
-                <p>
-                  Ngày đặt: {moment(item.ngayDat).format("DD/MM/YYYY ~ hh:mm")}{" "}
-                  - {item.danhSachGhe[0].tenCumRap}
-                </p>
-                <p>
-                  Ghế:
-                  {item.danhSachGhe.map((itemCinema, index) => (
-                    <span key={index}> {itemCinema.tenGhe}, </span>
-                  ))}
-                </p>
-              </div>
-              {/* {item.danhSachGhe.map((itemCinema, index) => (
-                <div key={index}>
-                  <h4>{itemCinema.tenHeThongRap}</h4>
+          {profile &&
+            profile?.thongTinDatVe?.map((item, index) => (
+              <div key={index} className={styles.row}>
+                <img alt="" src={item.hinhAnh} />
+                <div>
+                  <h4>{item?.danhSachGhe[0]?.tenHeThongRap}</h4>
                   <p>
-                    Ngày đặt: <span></span> - Rạp 1 - Ghế
+                    Ngày đặt:{" "}
+                    {moment(item?.ngayDat).format("DD/MM/YYYY ~ hh:mm")} -{" "}
+                    {item?.danhSachGhe[0]?.tenCumRap}
+                  </p>
+                  <p>
+                    Ghế:
+                    {item?.danhSachGhe?.map((itemCinema, index) => (
+                      <span key={index}> {itemCinema.tenGhe}, </span>
+                    ))}
                   </p>
                 </div>
-              ))} */}
-            </div>
-          ))}
+              </div>
+            ))}
         </div>
       </div>
     </div>

@@ -7,21 +7,20 @@ import Booking from "pages/Booking";
 import Login from "pages/Login";
 import Signup from "pages/Signup";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchProfileAction } from "redux/actions/authenAction";
 import ProfileUser from "pages/ProfileUser";
 
 const App = () => {
   const dispatch = useDispatch();
+
   useEffect(() => {
-    // dispatch async action fetchProfile
     dispatch(fetchProfileAction());
   }, [dispatch]);
-
   return (
     <BrowserRouter>
       <Header />
-      <div style={{paddingTop: 90}}>
+      <div style={{ paddingTop: 90 }}>
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/detail/:id" element={<DetailMovie />} />

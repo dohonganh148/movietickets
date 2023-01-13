@@ -21,7 +21,6 @@ const ScheduleMovie = () => {
     );
   }, [cinemaList]);
 
-  console.log(listSchedule);
   return (
     <div className={styles.content} id="cinema">
       <Tabs
